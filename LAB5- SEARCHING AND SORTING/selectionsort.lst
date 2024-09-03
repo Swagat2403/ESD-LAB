@@ -1,0 +1,157 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET,DATA,READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 10000000        DCD              0X10000000
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008                 AREA             mycode,CODE,READONLY
+    8 00000000                 ENTRY
+    9 00000000                 EXPORT           Reset_Handler
+   10 00000000         
+   11 00000000         Reset_Handler
+   12 00000000 480C            LDR              R0,=ARR
+   13 00000002 F04F 0804       MOV              R8,#4       ;n-1
+   14 00000006 4647    UP1     MOV              R7,R8
+   15 00000008 4601            MOV              R1,R0
+   16 0000000A 6802    UP2     LDR              R2,[R0]
+   17 0000000C F851 3F04       LDR              R3,[R1,#4]!
+   18 00000010 4293            CMP              R3,R2
+   19 00000012 D901            BLS              SKIP
+   20 00000014 600A            STR              R2,[R1]
+   21 00000016 6003            STR              R3,[R0]
+   22 00000018         SKIP
+   23 00000018 F1A7 0701       SUB              R7,#01
+   24 0000001C F097 0F00       TEQ              R7,#0
+   25 00000020 D1F3            BNE              UP2
+   26 00000022         
+   27 00000022 F100 0004       ADD              R0,#4
+   28 00000026 F1A8 0801       SUB              R8,#1
+   29 0000002A F098 0F00       TEQ              R8,#0
+   30 0000002E D1EA            BNE              UP1
+   31 00000030         
+   32 00000030         STOP
+   33 00000030 E7FE            B                STOP
+   34 00000032         
+   35 00000032 00 00 00000000  AREA             data,DATA
+   36 00000000 00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 ARR     DCD              0,0,0,0,0,0 ; PUT NUMBERS DIREC
+                                                            TLY INTO THE MEMORY
+                                                            
+   37 00000018                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=selectio
+nsort.d -oselectionsort.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -I
+C:\Keil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=selectionsort.ls
+t selectionsort.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file selectionsort.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file selectionsort.s
+   Uses
+      At line 2 in file selectionsort.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 11 in file selectionsort.s
+   Uses
+      At line 5 in file selectionsort.s
+      At line 9 in file selectionsort.s
+
+SKIP 00000018
+
+Symbol: SKIP
+   Definitions
+      At line 22 in file selectionsort.s
+   Uses
+      At line 19 in file selectionsort.s
+Comment: SKIP used once
+STOP 00000030
+
+Symbol: STOP
+   Definitions
+      At line 32 in file selectionsort.s
+   Uses
+      At line 33 in file selectionsort.s
+Comment: STOP used once
+UP1 00000006
+
+Symbol: UP1
+   Definitions
+      At line 14 in file selectionsort.s
+   Uses
+      At line 30 in file selectionsort.s
+Comment: UP1 used once
+UP2 0000000A
+
+Symbol: UP2
+   Definitions
+      At line 16 in file selectionsort.s
+   Uses
+      At line 25 in file selectionsort.s
+Comment: UP2 used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 7 in file selectionsort.s
+   Uses
+      None
+Comment: mycode unused
+6 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ARR 00000000
+
+Symbol: ARR
+   Definitions
+      At line 36 in file selectionsort.s
+   Uses
+      At line 12 in file selectionsort.s
+Comment: ARR used once
+data 00000000
+
+Symbol: data
+   Definitions
+      At line 35 in file selectionsort.s
+   Uses
+      None
+Comment: data unused
+2 symbols
+343 symbols in table

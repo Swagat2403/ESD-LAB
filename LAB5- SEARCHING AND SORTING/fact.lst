@@ -1,0 +1,150 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET,DATA,READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 10000000        DCD              0X10000000
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008                 AREA             mycode,CODE,READONLY
+    8 00000000                 ENTRY
+    9 00000000                 EXPORT           Reset_Handler
+   10 00000000         
+   11 00000000         Reset_Handler
+   12 00000000 4C0D            LDR              R4,=NUM
+   13 00000002 6820            LDR              R0,[R4]
+   14 00000004 F04F 0101       LDR              R1,=0X01
+   15 00000008 4A0C            LDR              R2,=FACT
+   16 0000000A F8DF D034       LDR              R13,=0X10001000
+   17 0000000E         
+   18 0000000E         
+   19 0000000E         
+   20 0000000E         
+   21 0000000E         FACT1
+   22 0000000E         
+   23 0000000E B500            PUSH{LR}
+   24 00000010 B401            PUSH{R0}
+   25 00000012 F1A0 0001       SUB              R0,#1
+   26 00000016 F090 0F00       TEQ              R0,#0
+   27 0000001A BF18 F7FF 
+              FFF7             BLNE             FACT1
+   28 00000020 BC01            POP              {R0}
+   29 00000022 F85D EB04       POP{LR}
+   30 00000026 FB01 F100       MUL              R1,R0
+   31 0000002A 6011            STR              R1,[R2]
+   32 0000002C 4770            BX               LR
+   33 0000002E         
+   34 0000002E F8D2 B000       LDR              R11,[R2]
+   35 00000032         
+   36 00000032         
+   37 00000032 E7FE    STOP    B                STOP
+   38 00000034 00000007 
+                       NUM     DCD              0X07
+   39 00000038 00000000 
+              00000000 
+              10001000         AREA             data,DATA,READWRITE
+   40 00000000 00000000 
+                       FACT    DCD              0
+   41 00000004                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=fact.d -
+ofact.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\Inc\NX
+P\LPC17xx --predefine="__EVAL SETA 1" --list=fact.lst fact.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file fact.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file fact.s
+   Uses
+      At line 2 in file fact.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+FACT1 0000000E
+
+Symbol: FACT1
+   Definitions
+      At line 21 in file fact.s
+   Uses
+      At line 27 in file fact.s
+Comment: FACT1 used once
+NUM 00000034
+
+Symbol: NUM
+   Definitions
+      At line 38 in file fact.s
+   Uses
+      At line 12 in file fact.s
+Comment: NUM used once
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 11 in file fact.s
+   Uses
+      At line 5 in file fact.s
+      At line 9 in file fact.s
+
+STOP 00000032
+
+Symbol: STOP
+   Definitions
+      At line 37 in file fact.s
+   Uses
+      At line 37 in file fact.s
+Comment: STOP used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 7 in file fact.s
+   Uses
+      None
+Comment: mycode unused
+5 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+FACT 00000000
+
+Symbol: FACT
+   Definitions
+      At line 40 in file fact.s
+   Uses
+      At line 15 in file fact.s
+Comment: FACT used once
+data 00000000
+
+Symbol: data
+   Definitions
+      At line 39 in file fact.s
+   Uses
+      None
+Comment: data unused
+2 symbols
+342 symbols in table
