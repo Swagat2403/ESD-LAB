@@ -1,0 +1,176 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET,DATA,READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 10000000        DCD              0x10000000
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008                 AREA             mycode,CODE,READONLY
+    8 00000000                 ENTRY
+    9 00000000                 EXPORT           Reset_Handler
+   10 00000000         
+   11 00000000         Reset_Handler
+   12 00000000 4815            LDR              R0,=VAL1
+   13 00000002 4916            LDR              R1,=VAL2
+   14 00000004 4A16            LDR              R2,=RES
+   15 00000006 F04F 0304       MOV              R3,#4
+   16 0000000A F04F 5400       LDR              R4,=0X20000000
+   17 0000000E F384 8803       MSR              XPSR,R4
+   18 00000012         
+   19 00000012         UP
+   20 00000012 F850 5B04       LDR              R5,[R0],#4
+   21 00000016 F851 6B04       LDR              R6,[R1],#4
+   22 0000001A EB65 0706       SBC              R7,R5,R6
+   23 0000001E F842 7B04       STR              R7,[R2],#4
+   24 00000022 F1A3 0301       SUB              R3,#1
+   25 00000026 F093 0F00       TEQ              R3,#0
+   26 0000002A D1F2            BNE              UP
+   27 0000002C F149 0900       ADC              R9,#0
+   28 00000030 F8C2 9000       STR              R9,[R2]
+   29 00000034         
+   30 00000034 E7FE    STOP    B                STOP
+   31 00000036 00 00 11111111 
+              22222222 
+              33333333 
+              FFFFFFFF VAL1    DCD              0X11111111,0X22222222,0X3333333
+3,0XFFFFFFFF
+   32 00000048         
+   33 00000048 55555555 
+              66666666 
+              77777777 
+              88888888 VAL2    DCD              0X55555555,0X66666666,0X7777777
+7,0X88888888
+   34 00000058         
+   35 00000058         
+   36 00000058         
+   37 00000058         
+   38 00000058         
+   39 00000058 00000000 
+              00000000 
+              00000000         AREA             data, DATA, READWRITE
+   40 00000000         
+   41 00000000 00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 RES     DCD              0,0,0,0,0
+   42 00000014         
+   43 00000014                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=subtract
+128.d -osubtract128.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\K
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+eil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=subtract128.lst subt
+ract128.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file subtract128.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file subtract128.s
+   Uses
+      At line 2 in file subtract128.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 11 in file subtract128.s
+   Uses
+      At line 5 in file subtract128.s
+      At line 9 in file subtract128.s
+
+STOP 00000034
+
+Symbol: STOP
+   Definitions
+      At line 30 in file subtract128.s
+   Uses
+      At line 30 in file subtract128.s
+Comment: STOP used once
+UP 00000012
+
+Symbol: UP
+   Definitions
+      At line 19 in file subtract128.s
+   Uses
+      At line 26 in file subtract128.s
+Comment: UP used once
+VAL1 00000038
+
+Symbol: VAL1
+   Definitions
+      At line 31 in file subtract128.s
+   Uses
+      At line 12 in file subtract128.s
+Comment: VAL1 used once
+VAL2 00000048
+
+Symbol: VAL2
+   Definitions
+      At line 33 in file subtract128.s
+   Uses
+      At line 13 in file subtract128.s
+Comment: VAL2 used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 7 in file subtract128.s
+   Uses
+      None
+Comment: mycode unused
+6 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RES 00000000
+
+Symbol: RES
+   Definitions
+      At line 41 in file subtract128.s
+   Uses
+      At line 14 in file subtract128.s
+Comment: RES used once
+data 00000000
+
+Symbol: data
+   Definitions
+      At line 39 in file subtract128.s
+   Uses
+      None
+Comment: data unused
+2 symbols
+343 symbols in table

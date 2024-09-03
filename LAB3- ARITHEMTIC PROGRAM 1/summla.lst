@@ -1,0 +1,133 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET,DATA,READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         
+    4 00000000         __Vectors
+    5 00000000 10000000        DCD              0X10000000
+    6 00000004 00000000        DCD              Reset_Handler
+    7 00000008                 ALIGN
+    8 00000008                 AREA             mycode,CODE,READONLY
+    9 00000000                 ENTRY
+   10 00000000                 EXPORT           Reset_Handler
+   11 00000000         
+   12 00000000         Reset_Handler
+   13 00000000 4803            LDR              R0,=NUM
+   14 00000002 4A04            LDR              R2,=RES
+   15 00000004         
+   16 00000004 FB00 0100       MLA              R1,R0,R0,R0 ;N(N+1)=N*N+N
+   17 00000008 EA4F 0151       LSR              R1,#1
+   18 0000000C 6011            STR              R1,[R2]
+   19 0000000E         
+   20 0000000E E7FE    STOP    B                STOP
+   21 00000010         
+   22 00000010         
+   23 00000010         
+   24 00000010 0000000A 
+                       NUM     EQU              10
+   25 00000010 0000000A 
+              00000000         AREA             data,DATA,READWRITE
+   26 00000000 00000000 
+                       RES     DCD              0
+                       
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=summla.d
+ -osummla.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\In
+c\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=summla.lst summla.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file summla.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 4 in file summla.s
+   Uses
+      At line 2 in file summla.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 12 in file summla.s
+   Uses
+      At line 6 in file summla.s
+      At line 10 in file summla.s
+
+STOP 0000000E
+
+Symbol: STOP
+   Definitions
+      At line 20 in file summla.s
+   Uses
+      At line 20 in file summla.s
+Comment: STOP used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 8 in file summla.s
+   Uses
+      None
+Comment: mycode unused
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RES 00000000
+
+Symbol: RES
+   Definitions
+      At line 26 in file summla.s
+   Uses
+      At line 14 in file summla.s
+Comment: RES used once
+data 00000000
+
+Symbol: data
+   Definitions
+      At line 25 in file summla.s
+   Uses
+      None
+Comment: data unused
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+NUM 0000000A
+
+Symbol: NUM
+   Definitions
+      At line 24 in file summla.s
+   Uses
+      At line 13 in file summla.s
+Comment: NUM used once
+1 symbol
+341 symbols in table

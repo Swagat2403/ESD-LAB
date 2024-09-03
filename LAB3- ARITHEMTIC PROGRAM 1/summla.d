@@ -1,0 +1,1 @@
+summla.o: summla.s
