@@ -1,0 +1,168 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET, DATA, READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 10000000        DCD              0X10000000
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008                 AREA             mycode, CODE, READONLY
+    8 00000000                 ENTRY
+    9 00000000                 EXPORT           Reset_Handler
+   10 00000000         
+   11 00000000         Reset_Handler
+   12 00000000 4808            LDR              R0, =SRC1
+   13 00000002 4909            LDR              R1, =SRC2
+   14 00000004 6802            LDR              R2, [R0]
+   15 00000006 680B            LDR              R3, [R1]
+   16 00000008 4C08            LDR              R4, =DST
+   17 0000000A         
+   18 0000000A         UP
+   19 0000000A 429A            CMP              R2, R3      ; Compare R2 and R3
+                                                            
+   20 0000000C D003            BEQ              FIN         ; If equal, branch 
+                                                            to FIN
+   21 0000000E BFCC 1AD2       SUBGT            R2, R2, R3  ; If R2 > R3, subtr
+                                                            act R3 from R2
+   22 00000012 1A9B            SUBLE            R3, R3, R2  ; If R2 <= R3, subt
+                                                            ract R2 from R3
+   23 00000014 E7F9            B                UP          ; Branch back to UP
+                                                             to continue the lo
+                                                            op
+   24 00000016         
+   25 00000016         FIN
+   26 00000016 6022            STR              R2, [R4]
+   27 00000018         
+   28 00000018         STOP
+   29 00000018 E7FE            B                STOP
+   30 0000001A         
+   31 0000001A         
+   32 0000001A 00 00 00000006 
+                       SRC1    DCD              0x06
+   33 00000020 00000008 
+                       SRC2    DCD              0x08
+   34 00000024 00000000 
+              00000000 
+              00000000         AREA             data, DATA, READWRITE
+   35 00000000 00000000 
+                       DST     DCD              0x0
+   36 00000004                 ALIGN
+   37 00000004                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=gcd.d -o
+gcd.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\Inc\NXP\
+LPC17xx --predefine="__EVAL SETA 1" --list=gcd.lst gcd.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file gcd.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file gcd.s
+   Uses
+      At line 2 in file gcd.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+FIN 00000016
+
+Symbol: FIN
+   Definitions
+      At line 25 in file gcd.s
+   Uses
+      At line 20 in file gcd.s
+Comment: FIN used once
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 11 in file gcd.s
+   Uses
+      At line 5 in file gcd.s
+      At line 9 in file gcd.s
+
+SRC1 0000001C
+
+Symbol: SRC1
+   Definitions
+      At line 32 in file gcd.s
+   Uses
+      At line 12 in file gcd.s
+Comment: SRC1 used once
+SRC2 00000020
+
+Symbol: SRC2
+   Definitions
+      At line 33 in file gcd.s
+   Uses
+      At line 13 in file gcd.s
+Comment: SRC2 used once
+STOP 00000018
+
+Symbol: STOP
+   Definitions
+      At line 28 in file gcd.s
+   Uses
+      At line 29 in file gcd.s
+Comment: STOP used once
+UP 0000000A
+
+Symbol: UP
+   Definitions
+      At line 18 in file gcd.s
+   Uses
+      At line 23 in file gcd.s
+Comment: UP used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 7 in file gcd.s
+   Uses
+      None
+Comment: mycode unused
+7 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+DST 00000000
+
+Symbol: DST
+   Definitions
+      At line 35 in file gcd.s
+   Uses
+      At line 16 in file gcd.s
+Comment: DST used once
+data 00000000
+
+Symbol: data
+   Definitions
+      At line 34 in file gcd.s
+   Uses
+      None
+Comment: data unused
+2 symbols
+344 symbols in table

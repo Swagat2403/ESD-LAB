@@ -1,0 +1,2 @@
+Dependencies for Project 'ADD128BIT', Target 'Target 1': (DO NOT MODIFY !)
+F (.\ADD128.s)(0x66CAF204)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\NXP\LPC17xx --list "ADD128.lst" --xref -o "ADD128.o" --depend "ADD128.d")

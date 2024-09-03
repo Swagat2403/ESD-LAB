@@ -1,0 +1,2 @@
+Dependencies for Project 'ADD64BIT', Target 'Target 1': (DO NOT MODIFY !)
+F (.\ADD64.s)(0x66C9FF63)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\NXP\LPC17xx --list "ADD64.lst" --xref -o "ADD64.o" --depend "ADD64.d")
