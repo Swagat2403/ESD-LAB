@@ -1,0 +1,20 @@
+	AREA RESET,DATA,READONLY
+	EXPORT __Vectors
+__Vectors
+	DCD 0X10001000
+	DCD Reset_Handler
+	ALIGN
+	AREA mycode,CODE,READONLY
+	ENTRY
+	EXPORT Reset_Handler
+Reset_Handler
+	LDR R0,=NUM
+	LDR R1,=(NUM+1)
+	MUL R2,R0,R1
+	LSR R2,#1
+
+STOP B STOP
+NUM EQU 10
+	AREA mydata,DATA,READWRITE
+
+	END
