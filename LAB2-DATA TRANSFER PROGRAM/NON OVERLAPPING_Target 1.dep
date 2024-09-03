@@ -1,0 +1,2 @@
+Dependencies for Project 'NON OVERLAPPING', Target 'Target 1': (DO NOT MODIFY !)
+F (.\nonoverlap.s)(0x66CC0C87)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\NXP\LPC17xx --list "nonoverlap.lst" --xref -o "nonoverlap.o" --depend "nonoverlap.d")

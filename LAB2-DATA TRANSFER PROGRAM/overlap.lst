@@ -1,0 +1,127 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET,DATA,READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 10000000        DCD              0X10000000
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008                 AREA             mydata,CODE,READONLY
+    8 00000000                 ENTRY
+    9 00000000                 EXPORT           Reset_Handler
+   10 00000000         
+   11 00000000         Reset_Handler
+   12 00000000 4811            LDR              R0,=SRC
+   13 00000002 F100 0024       ADD              R0,#36
+   14 00000006         
+   15 00000006 4910            LDR              R1,=SRC
+   16 00000008 F101 0138       ADD              R1,#56
+   17 0000000C         
+   18 0000000C F04F 020A       MOV              R2,#10
+   19 00000010         
+   20 00000010         UP
+   21 00000010 F850 3904       LDR              R3,[R0],#-4
+   22 00000014 F841 3904       STR              R3,[R1],#-4
+   23 00000018 3A01            SUBS             R2,#01
+   24 0000001A D1F9            BNE              UP
+   25 0000001C         
+   26 0000001C E7FE    STOP    B                STOP
+   27 0000001E 00 00 11111111 
+              22222222 
+              33333333 
+              44444444 
+              55555555 
+              66666666 
+              77777777 
+              88888888 
+              99999999 
+              AAAAAAAA SRC     DCD              0X11111111, 0X22222222, 0X33333
+333, 0X44444444, 0X55555555, 0X66666666, 0X77777777, 0X88888888, 0X99999999, 0X
+AAAAAAAA
+   28 00000048         
+   29 00000048         
+   30 00000048 00000000 
+              00000000         AREA             mydata, DATA, READWRITE
+   31 00000050         
+   32 00000050         
+   33 00000050                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=overlap.
+d -ooverlap.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\
+Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=overlap.lst overlap.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file overlap.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file overlap.s
+   Uses
+      At line 2 in file overlap.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 11 in file overlap.s
+   Uses
+      At line 5 in file overlap.s
+      At line 9 in file overlap.s
+
+SRC 00000020
+
+Symbol: SRC
+   Definitions
+      At line 27 in file overlap.s
+   Uses
+      At line 12 in file overlap.s
+      At line 15 in file overlap.s
+
+STOP 0000001C
+
+Symbol: STOP
+   Definitions
+      At line 26 in file overlap.s
+   Uses
+      At line 26 in file overlap.s
+Comment: STOP used once
+UP 00000010
+
+Symbol: UP
+   Definitions
+      At line 20 in file overlap.s
+   Uses
+      At line 24 in file overlap.s
+Comment: UP used once
+mydata 00000000
+
+Symbol: mydata
+   Definitions
+      At line 7 in file overlap.s
+   Uses
+      None
+Comment: mydata unused
+5 symbols
+340 symbols in table
