@@ -1,0 +1,180 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET,DATA,READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 10000000        DCD              0X10000000
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008                 AREA             mycode,CODE,READONLY
+    8 00000000                 ENTRY
+    9 00000000                 EXPORT           Reset_Handler
+   10 00000000         
+   11 00000000         Reset_Handler
+   12 00000000 4815            LDR              R0,=SRC1
+   13 00000002 4916            LDR              R1,=DST
+   14 00000004 F04F 0204       MOV              R2,#04
+   15 00000008 6803            LDR              R3,[R0]
+   16 0000000A         
+   17 0000000A         UP
+   18 0000000A F003 04FF       AND              R4,R3,#0XFF
+   19 0000000E 2C40            CMP              R4,#0X40
+   20 00000010 BF88 3C07       SUBHI            R4,#07
+   21 00000014 F1A4 0430       SUB              R4,#0X30
+   22 00000018 4425            ADD              R5,R4
+   23 0000001A EA4F 7535       ROR              R5,#28
+   24 0000001E EA4F 2313       LSR              R3,#8
+   25 00000022 3A01            SUBS             R2,#1
+   26 00000024 D1F1            BNE              UP
+   27 00000026 6843            LDR              R3,[R0,#4]
+   28 00000028 F04F 0204       MOV              R2,#4
+   29 0000002C         
+   30 0000002C         UP2
+   31 0000002C F003 04FF       AND              R4,R3,#0XFF
+   32 00000030 2C40            CMP              R4,#0X40
+   33 00000032 BF88 3C07       SUBHI            R4,#07
+   34 00000036 F1A4 0430       SUB              R4,#0X30
+   35 0000003A 4425            ADD              R5,R4
+   36 0000003C EA4F 7535       ROR              R5,#28
+   37 00000040 EA4F 2313       LSR              R3,#8
+   38 00000044 3A01            SUBS             R2,#1
+   39 00000046 D1F1            BNE              UP2
+   40 00000048 EA4F 1535       ROR              R5,#4
+   41 0000004C 600D            STR              R5,[R1]
+   42 0000004E         
+   43 0000004E         
+   44 0000004E         
+   45 0000004E         
+   46 0000004E         
+   47 0000004E         
+   48 0000004E         
+   49 0000004E         
+   50 0000004E         
+   51 0000004E         
+   52 0000004E         
+   53 0000004E         STOP
+   54 0000004E E7FE            B                STOP
+   55 00000050 31433839 
+              45303236 SRC1    DCD              0X31433839,0X45303236
+   56 00000058 00000000 
+              00000000         AREA             data,DATA,READWRITE
+   57 00000000 00000000 
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+                       DST     DCD              0
+   58 00000004                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=asciitoh
+ex.d -oasciitohex.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Kei
+l\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=asciitohex.lst asciito
+hex.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file asciitohex.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file asciitohex.s
+   Uses
+      At line 2 in file asciitohex.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 11 in file asciitohex.s
+   Uses
+      At line 5 in file asciitohex.s
+      At line 9 in file asciitohex.s
+
+SRC1 00000050
+
+Symbol: SRC1
+   Definitions
+      At line 55 in file asciitohex.s
+   Uses
+      At line 12 in file asciitohex.s
+Comment: SRC1 used once
+STOP 0000004E
+
+Symbol: STOP
+   Definitions
+      At line 53 in file asciitohex.s
+   Uses
+      At line 54 in file asciitohex.s
+Comment: STOP used once
+UP 0000000A
+
+Symbol: UP
+   Definitions
+      At line 17 in file asciitohex.s
+   Uses
+      At line 26 in file asciitohex.s
+Comment: UP used once
+UP2 0000002C
+
+Symbol: UP2
+   Definitions
+      At line 30 in file asciitohex.s
+   Uses
+      At line 39 in file asciitohex.s
+Comment: UP2 used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 7 in file asciitohex.s
+   Uses
+      None
+Comment: mycode unused
+6 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+DST 00000000
+
+Symbol: DST
+   Definitions
+      At line 57 in file asciitohex.s
+   Uses
+      At line 13 in file asciitohex.s
+Comment: DST used once
+data 00000000
+
+Symbol: data
+   Definitions
+      At line 56 in file asciitohex.s
+   Uses
+      None
+Comment: data unused
+2 symbols
+343 symbols in table

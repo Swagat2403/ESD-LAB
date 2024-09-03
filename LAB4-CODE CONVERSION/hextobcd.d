@@ -1,0 +1,1 @@
+hextobcd.o: hextobcd.s
