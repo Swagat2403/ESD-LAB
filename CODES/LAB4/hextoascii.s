@@ -1,0 +1,30 @@
+	AREA RESET,DATA,READONLY
+	EXPORT __Vectors
+__Vectors
+	DCD 0X10000000
+	DCD Reset_Handler
+	ALIGN
+	AREA mycode,CODE,READONLY
+	ENTRY
+	EXPORT Reset_Handler
+	
+Reset_Handler
+	LDR R0,=SRC1
+	LDR R1,=DST
+	MOV R2,#8
+	LDR R3,[R0]
+UP	AND R4,R3,#0X0F
+	CMP R4,#0X0A
+	ADDCS R4,#0X07 ; If R4 >= 0x0A, add 0x37 (for A-F)
+	ADD R4,#0X30  ; If R4 < 0x0A, add 0x30 (for 0-9)
+	STRB R4,[R1],#1
+	LSR R3,#4
+	SUBS R2,#1
+	BNE UP
+STOP
+	B STOP
+SRC1 DCD 0XABCD4321
+	AREA data,DATA,READWRITE
+DST DCD 0
+	END
+	
